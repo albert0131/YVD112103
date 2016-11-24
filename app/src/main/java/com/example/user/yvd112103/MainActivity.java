@@ -67,3 +67,15 @@ public class MainActivity extends AppCompatActivity {
         Log.d("NET", "queue start");
     }
 }
+
+/* JSON example
+http://dean-android.blogspot.tw/2013/06/androidjson.html
+http://stackoverflow.com/questions/39881283/thingspeak-json-android-parse
+
+StringRequest dht11Last = new StringRequest("https://api.thingspeak.com/channels/176126/feed/last.json?results=2&api_key=TC1HMH4R7SSVE93A",
+int humiLast = new JSONObject(dht11Last).getInt("field1");
+int tempLast = new JSONObject(dht11Last).getInt("field2");
+
+
+*/
+
