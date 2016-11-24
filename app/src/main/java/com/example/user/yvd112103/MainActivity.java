@@ -24,18 +24,21 @@ public class MainActivity extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
         // 抓取新北市 opendata
-        StringRequest request = new StringRequest("http://data.ntpc.gov.tw/od/data/api/BF90FA7E-C358-4CDA-B579-B6C84ADC96A1?$format=json",
+//        StringRequest request = new StringRequest("http://data.ntpc.gov.tw/od/data/api/BF90FA7E-C358-4CDA-B579-B6C84ADC96A1?$format=json",
+        // 聯合新聞網資料
+        // 建立class MyUTF8StringRequest to Solve Volley UTF8 Problem
+        StringRequest request = new MyUTF8StringRequest("http://udn.com/rssfeed/news/1",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Log.d("NET", response);
                     // -------- GSON 寫法 ---------
-                        Gson gson = new Gson();
-                        Animal loc[] = gson.fromJson(response, Animal[].class);
-                        for (Animal a : loc)
-                        {
-                            Log.d("NET", a.district);
-                        }
+//                        Gson gson = new Gson();
+//                        Animal loc[] = gson.fromJson(response, Animal[].class);
+//                        for (Animal a : loc)
+//                        {
+//                            Log.d("NET", a.district);
+//                        }
                     // -----------------------
 
                     // ------- JSON 寫法 -------
@@ -61,6 +64,6 @@ public class MainActivity extends AppCompatActivity {
         });
         queue.add(request);
         queue.start();
-
+        Log.d("NET", "queue start");
     }
 }
